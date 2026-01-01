@@ -1,3 +1,21 @@
 <Solution>
+  <Folder Name="/Currency.Client/">
+    <File Path="Currency.Client/index.html" />
+    <File Path="Currency.Client/package-lock.json" />
+    <File Path="Currency.Client/package.json" />
+    <File Path="Currency.Client/vite.config.js" />
+  </Folder>
+  <Folder Name="/Currency.Client/src/">
+    <File Path="Currency.Client/src/App.css" />
+    <File Path="Currency.Client/src/App.jsx" />
+    <File Path="Currency.Client/src/index.css" />
+    <File Path="Currency.Client/src/main.jsx" />
+  </Folder>
+  <Folder Name="/Currency.Client/src/assets/">
+    <File Path="Currency.Client/src/assets/react.svg" />
+  </Folder>
+  <Folder Name="/Currency.Client/src/public/">
+    <File Path="Currency.Client/public/vite.svg" />
+  </Folder>
   <Project Path="Currency.Api/Currency.Api.csproj" />
 </Solution>
