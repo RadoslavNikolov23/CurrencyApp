@@ -1,3 +1,4 @@
+import "./App.css";
 import { useState } from "react";
 
 function App() {
@@ -11,15 +12,11 @@ function App() {
     ];
 
     return (
-        <div style={{ padding: "20px" }}>
-            <h1>Currency App</h1>
+        <div className="app">
+            <h1 className="title">Currency App</h1>
 
-            <button onClick={() => setShowCurrencies(!showCurrencies)}>
-                Toggle currencies
-            </button>
-
-            {showCurrencies && (
-                <ul>
+            {!showCurrencies && (
+                <ul className="currency-list">
                     {currencies.map(currency => (
                         <CurrencyInfo
                             key={currency.code}
@@ -29,14 +26,19 @@ function App() {
                     ))}
                 </ul>
             )}
+
+            <button className="button" onClick={() => setShowCurrencies(!showCurrencies)}>
+                {showCurrencies ? "Show currencies" : "Hide currencies"}
+            </button>
         </div>
     );
 }
 
 function CurrencyInfo({ name, code }) {
     return (
-        <li>
-            {name} ({code})
+        <li className="currency-item">
+            <span>{name}</span>
+            <strong>{code}</strong>
         </li>
     );
 }
