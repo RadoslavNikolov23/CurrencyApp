@@ -1,5 +1,4 @@
 ﻿using Currency.Api.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Currency.Api.Controllers
@@ -17,6 +16,7 @@ namespace Currency.Api.Controllers
         ];
 
         [HttpGet]
+        [ResponseCache(Duration = 600)]
         public IActionResult GetAll()
         {
             return Ok(currencies);

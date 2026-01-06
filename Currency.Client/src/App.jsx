@@ -1,15 +1,17 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
+    const [currencies, SetCurrencies] = useState([]);
     const [showCurrencies, setShowCurrencies] = useState(true);
 
-    const currencies = [
-        { code: "EUR", name: "Euro" },
-        { code: "USD", name: "US Dollar" },
-        { code: "GBP", name: "British Pound" },
-        { code: "BGN", name: "Bulgarian Lev" }
-    ];
+useEffect(() => {
+    fetch("https://localhost:7279/api/currency")
+        .then(response => response.json())
+        .then(data => SetCurrencies(data))
+        .catch(error => console.error("Error fetching currencies:", error));
+}, []);
+
 
     return (
         <div className="app">
@@ -20,8 +22,9 @@ function App() {
                     {currencies.map(currency => (
                         <CurrencyInfo
                             key={currency.code}
-                            name={currency.name}
                             code={currency.code}
+                            name={currency.name}
+                            rate={currency.rate}
                         />
                     ))}
                 </ul>
@@ -34,11 +37,12 @@ function App() {
     );
 }
 
-function CurrencyInfo({ name, code }) {
+function CurrencyInfo({ name, code, rate }) {
     return (
         <li className="currency-item">
-            <span>{name}</span>
             <strong>{code}</strong>
+            <span>{name}</span>
+            <span>{rate}</span>
         </li>
     );
 }
