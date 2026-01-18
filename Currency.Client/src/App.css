@@ -49,6 +49,11 @@
         background-color: #15803d;
     }
 
+button:disabled {
+    opacity: 2;
+    cursor: not-allowed;
+}
+
 .currency-list {
     list-style: none;
     padding: 0;
@@ -64,4 +69,11 @@
     display: flex;
     justify-content: space-between;
     gap:2rem;
+}
+
+.error {
+    color: #dc2626;
+    margin: auto;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
