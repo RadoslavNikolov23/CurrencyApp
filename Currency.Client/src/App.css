@@ -9,8 +9,8 @@
 #root {
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin: auto;
+    align-items:flex-start;
+    margin: 3rem auto;
     height: 100vh;
 }
 
@@ -23,11 +23,13 @@
     border: 2.5px solid #e5e7eb;
     border-radius: 8px;
     padding: 3rem 5rem;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .title {
     color: #2563eb;
-    margin: 1rem 0;
+    margin: auto;
 }
 
 .counter {

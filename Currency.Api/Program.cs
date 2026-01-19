@@ -1,4 +1,6 @@
 
+using Currency.Api.Services;
+
 namespace Currency.Api
 {
     public class Program
@@ -8,7 +10,9 @@ namespace Currency.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
-           
+
+            builder.Services.AddScoped<ExchangeRateService>();
+
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 

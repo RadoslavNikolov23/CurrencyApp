@@ -13,7 +13,7 @@ function App() {
        // setLoading(true);
       //  setError(null);
 
-        fetch("https://localhost:7279/api/currenc")
+        fetch("https://localhost:7279/api/currency")
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to load currencies");
@@ -35,10 +35,11 @@ function App() {
                 <ul className="currency-list">
                     {currencies.map(currency => (
                         <CurrencyInfo
-                            key={currency.code}
+                            key={currency.currency}
+                            currency={currency.currency}
                             code={currency.code}
-                            name={currency.name}
-                            rate={currency.rate}
+                            forOneEuro={currency.forOneEuro}
+                            euroForOneCurrency={currency.euroForOneCurrency}
                         />
                     ))}
                 </ul>
@@ -61,12 +62,13 @@ function App() {
     );
 }
 
-function CurrencyInfo({ name, code, rate }) {
+function CurrencyInfo({ currency, code, forOneEuro, euroForOneCurrency }) {
     return (
         <li className="currency-item">
             <strong>{code}</strong>
-            <span>{name}</span>
-            <span>{rate}</span>
+            <span>{currency}</span>
+            <span>{forOneEuro}</span>
+            <span>{euroForOneCurrency}</span>
         </li>
     );
 }
