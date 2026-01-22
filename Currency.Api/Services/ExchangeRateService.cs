@@ -51,29 +51,29 @@ namespace Currency.Api.Services
                                 var restTrNodes = tbody
                                                       .SelectNodes(".//tr");
 
-                                if (firstTrNodes != null)
-                                {
-                                    foreach (var tr in firstTrNodes)
-                                    {
-                                        HtmlNode firstTd = tr
-                                                            .SelectSingleNode(".//td[@class='first']");
-                                        HtmlNode centerTd1 = tr
-                                                            .SelectSingleNode(".//td[@class='center']");
-                                        HtmlNode centerTd2 = tr
-                                                            .SelectSingleNode(".//td[@class='center'][2]"); // second center column
-                                        HtmlNode lastCenterTd = tr
-                                                            .SelectSingleNode(".//td[@class='last center']");
+                                //if (firstTrNodes != null)
+                                //{
+                                //    foreach (var tr in firstTrNodes)
+                                //    {
+                                //        HtmlNode firstTd = tr
+                                //                            .SelectSingleNode(".//td[@class='first']");
+                                //        HtmlNode centerTd1 = tr
+                                //                            .SelectSingleNode(".//td[@class='center']");
+                                //        HtmlNode centerTd2 = tr
+                                //                            .SelectSingleNode(".//td[@class='center'][2]"); // second center column
+                                //        HtmlNode lastCenterTd = tr
+                                //                            .SelectSingleNode(".//td[@class='last center']");
 
-                                        CurrencyRate currency = new CurrencyRate(
-                                                                firstTd.InnerText.ToString(),
-                                                                centerTd1.InnerText.ToString(),
-                                                                centerTd2.InnerText.ToString(),
-                                                                lastCenterTd.InnerText.ToString()
-                                                                );
+                                //        CurrencyRate currency = new CurrencyRate(
+                                //                                firstTd.InnerText.ToString(),
+                                //                                centerTd1.InnerText.ToString(),
+                                //                                centerTd2.InnerText.ToString(),
+                                //                                lastCenterTd.InnerText.ToString()
+                                //                                );
 
-                                        currentCurrency.Add(currency);
-                                    }
-                                }
+                                //        currentCurrency.Add(currency);
+                                //    }
+                                //}
 
                                 if (restTrNodes != null)
                                 {

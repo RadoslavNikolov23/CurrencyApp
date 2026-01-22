@@ -4,45 +4,50 @@ import { useEffect, useState } from "react";
 function App() {
     const [currencies, setCurrencies] = useState([]);
     const [showCurrencies, setShowCurrencies] = useState(true);
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-
     useEffect(() => {
-       // setLoading(true);
-      //  setError(null);
-
         fetch("https://localhost:7279/api/currency")
             .then(response => {
-                if (!response.ok) {
+                if (!response. ok) {
                     throw new Error("Failed to load currencies");
                 }
-
-                return response.json()
+                return response.json();
             })
             .then(data => setCurrencies(data))
             .catch(error => setError(error.message))
-            .finally(()=>setLoading(false));
+            .finally(() => setLoading(false));
     }, []);
-
 
     return (
         <div className="app">
             <h1 className="title">Currency App</h1>
 
-            {!loading && !error && !showCurrencies && (
-                <ul className="currency-list">
-                    {currencies.map(currency => (
-                        <CurrencyInfo
-                            key={currency.currency}
-                            currency={currency.currency}
-                            code={currency.code}
-                            forOneEuro={currency.forOneEuro}
-                            euroForOneCurrency={currency.euroForOneCurrency}
-                        />
-                    ))}
-                </ul>
+            {!loading && ! error && !showCurrencies && (
+                <div className="table-container">
+                    <table className="currency-table">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Currency</th>
+                                <th>For 1 EUR</th>
+                                <th>EUR for 1 Unit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currencies.map(currency => (
+                                <CurrencyRow
+                                    key={currency. currency}
+                                    currency={currency.currency}
+                                    code={currency.code}
+                                    forOneEuro={currency.forOneEuro}
+                                    euroForOneCurrency={currency.euroForOneCurrency}
+                                />
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
             )}
 
             <button
@@ -51,25 +56,24 @@ function App() {
                 disabled={loading}
                 style={{ display: error ? "none" : "block" }}
             >
-                {showCurrencies ? "Show currencies" : "Hide currencies"}
+                {showCurrencies ?  "Show currencies" : "Hide currencies"}
             </button>
 
-            {loading && <p>Loading...</p>}
+            {loading && <p className="loading">Loading currencies...</p>}
 
             {error && <p className="error">{error}</p>}
-
         </div>
     );
 }
 
-function CurrencyInfo({ currency, code, forOneEuro, euroForOneCurrency }) {
+function CurrencyRow({ currency, code, forOneEuro, euroForOneCurrency }) {
     return (
-        <li className="currency-item">
-            <strong>{code}</strong>
-            <span>{currency}</span>
-            <span>{forOneEuro}</span>
-            <span>{euroForOneCurrency}</span>
-        </li>
+        <tr>
+            <td className="currency-code">{code}</td>
+            <td className="currency-name">{currency}</td>
+            <td className="currency-rate">{forOneEuro}</td>
+            <td className="currency-rate">{euroForOneCurrency}</td>
+        </tr>
     );
 }
 
