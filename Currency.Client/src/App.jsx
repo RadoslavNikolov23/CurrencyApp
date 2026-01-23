@@ -1,14 +1,22 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 
+
+
 function App() {
     const [currencies, setCurrencies] = useState([]);
     const [showCurrencies, setShowCurrencies] = useState(true);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
-        fetch("https://localhost:7279/api/currency")
+        console.log("API URL:", apiUrl); // Add this line
+        console.log("Full fetch URL:", `${apiUrl}/currency`); // Add this line
+
+        fetch(`${apiUrl}/currency`)
+       // fetch("https://localhost:7279/api/currency")
             .then(response => {
                 if (!response. ok) {
                     throw new Error("Failed to load currencies");
