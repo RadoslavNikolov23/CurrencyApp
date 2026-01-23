@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Currency.Client/">
+    <File Path="Currency.Client/.env" />
     <File Path="Currency.Client/index.html" />
     <File Path="Currency.Client/package-lock.json" />
     <File Path="Currency.Client/package.json" />

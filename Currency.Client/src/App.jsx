@@ -12,11 +12,7 @@ function App() {
     const apiUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
-        console.log("API URL:", apiUrl); // Add this line
-        console.log("Full fetch URL:", `${apiUrl}/currency`); // Add this line
-
         fetch(`${apiUrl}/currency`)
-       // fetch("https://localhost:7279/api/currency")
             .then(response => {
                 if (!response. ok) {
                     throw new Error("Failed to load currencies");
