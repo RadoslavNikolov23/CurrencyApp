@@ -1,21 +1,14 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { getCurrencies } from "./services/currencyServices";
+import { useState } from "react";
+import { useCurrencies } from "./hooks/useCurrencies";
 
 
 
 function App() {
-    const [currencies, setCurrencies] = useState([]);
-    const [showCurrencies, setShowCurrencies] = useState(true);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
 
-    useEffect(() => {
-        getCurrencies()
-            .then(data => setCurrencies(data))
-            .catch(error => setError(error.message))
-            .finally(() => setLoading(false));
-    }, []);
+    const { currencies, loading, error } = useCurrencies();
+    const [ showCurrencies, setShowCurrencies ] = useState(true);
+   
 
     return (
         <div className="app">

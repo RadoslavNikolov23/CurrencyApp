@@ -15,6 +15,9 @@
   <Folder Name="/Currency.Client/src/assets/">
     <File Path="Currency.Client/src/assets/react.svg" />
   </Folder>
+  <Folder Name="/Currency.Client/src/hooks/">
+    <File Path="useCurrencies.js" />
+  </Folder>
   <Folder Name="/Currency.Client/src/public/">
     <File Path="Currency.Client/public/vite.svg" />
   </Folder>
