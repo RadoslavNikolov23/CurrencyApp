@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
+import { getCurrencies } from "./services/currencyServices";
 
 
 
@@ -9,16 +10,8 @@ function App() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const apiUrl = import.meta.env.VITE_API_URL;
-
     useEffect(() => {
-        fetch(`${apiUrl}/currency`)
-            .then(response => {
-                if (!response. ok) {
-                    throw new Error("Failed to load currencies");
-                }
-                return response.json();
-            })
+        getCurrencies()
             .then(data => setCurrencies(data))
             .catch(error => setError(error.message))
             .finally(() => setLoading(false));

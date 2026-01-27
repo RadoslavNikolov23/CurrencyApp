@@ -18,5 +18,8 @@
   <Folder Name="/Currency.Client/src/public/">
     <File Path="Currency.Client/public/vite.svg" />
   </Folder>
+  <Folder Name="/Currency.Client/src/services/">
+    <File Path="currencyService.js" />
+  </Folder>
   <Project Path="Currency.Api/Currency.Api.csproj" />
 </Solution>
