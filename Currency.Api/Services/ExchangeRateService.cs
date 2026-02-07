@@ -19,8 +19,13 @@ namespace Currency.Api.Services
                 throw new IndexOutOfRangeException("Cannot show for future dates! Please select again!");
             }
 
+            while (today.DayOfWeek == DayOfWeek.Saturday || today.DayOfWeek == DayOfWeek.Sunday)
+            {
+                today = today.AddDays(-1);
+            }
 
-            string url = $"https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=&group1=first&firstDays={day}&firstMonths={month}&firstYear={year}&search=true&showChart=false&showChartButton=false";
+
+            string url = $"https://www.bnb.bg/Statistics/StExternalSector/StExchangeRates/StERForeignCurrencies/index.htm?downloadOper=&group1=first&firstDays={today.Day}&firstMonths={today.Month}&firstYear={today.Year}&search=true&showChart=false&showChartButton=false";
 
             HttpClient client = new HttpClient();
 

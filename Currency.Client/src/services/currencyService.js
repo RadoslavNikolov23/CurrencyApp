@@ -2,7 +2,7 @@ import { api } from "./api";
 
 
 export async function getAllCurrencies() {
-   return api.get("/currencies");
+   return api.get("/currency");
 }
 
 //TODO: Implement conversion endpoint in backend and then uncomment this function
