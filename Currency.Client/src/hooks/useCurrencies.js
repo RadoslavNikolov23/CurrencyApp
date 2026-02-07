@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCurrencies } from "../services/currencyService.js";
+import { getAllCurrencies } from "../services/currencyService.js";
 
 
 
@@ -9,7 +9,7 @@ export function useCurrencies() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        getCurrencies()
+        getAllCurrencies()
             .then(data => setCurrencies(data))
             .catch(error => setError(error.message))
             .finally(() => setLoading(false));

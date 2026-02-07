@@ -1,18 +1,11 @@
+import { api } from "./api";	
 
-const API_URL = import.meta.env.VITE_API_URL;
 
-export async function getCurrencies() {
-    try {
-        const response = await fetch(`${API_URL}/currency`);
-
-        if (!response.ok) {
-            const text = await response.text();
-            throw new Error(text || "Server problem!");
-        }
-
-        return response.json();
-    }
-    catch (error) {
-        throw new Error(`Cannot connect to the API: ${error}`);
-    }
+export async function getAllCurrencies() {
+   return api.get("/currencies");
 }
+
+//TODO: Implement conversion endpoint in backend and then uncomment this function
+// export async function convertCurrency(data) {
+//     return api.post("/currency/convert", data);
+// }
